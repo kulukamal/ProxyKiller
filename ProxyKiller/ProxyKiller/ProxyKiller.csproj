@@ -88,19 +88,33 @@
     <Compile Include="StudentForm.Designer.cs">
       <DependentUpon>StudentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StudentPicture.cs" />
     <Compile Include="StudentSignUp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StudentSignUp.Designer.cs">
       <DependentUpon>StudentSignUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="TeacherPage.cs">
+    <Compile Include="Subject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TeacherPage.Designer.cs">
-      <DependentUpon>TeacherPage.cs</DependentUpon>
+    <Compile Include="Subject.Designer.cs">
+      <DependentUpon>Subject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubjectAttendance.cs" />
+    <Compile Include="UploadAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UploadAttendance.Designer.cs">
+      <DependentUpon>UploadAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="StudentInfo.cs" />
+    <Compile Include="TeacherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherForm.Designer.cs">
+      <DependentUpon>TeacherForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,8 +133,14 @@
     <EmbeddedResource Include="StudentSignUp.resx">
       <DependentUpon>StudentSignUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TeacherPage.resx">
-      <DependentUpon>TeacherPage.cs</DependentUpon>
+    <EmbeddedResource Include="Subject.resx">
+      <DependentUpon>Subject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UploadAttendance.resx">
+      <DependentUpon>UploadAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherForm.resx">
+      <DependentUpon>TeacherForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -42,7 +42,7 @@ namespace ProxyKiller
                 {
                     if(user.Type == "teacher")
                     {
-                        TeacherPage t = new TeacherPage(user.UserName);
+                        TeacherForm t = new TeacherForm();
                         this.Hide();
                         t.Show();
                     }

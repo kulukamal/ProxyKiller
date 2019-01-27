@@ -19,19 +19,24 @@ namespace ProxyKiller
         static MongoClient client;
         static IMongoDatabase db;
         static IMongoCollection<StudentInfo> studentInfo;
+        static IMongoCollection<StudentPicture> studentPicture;
         StudentInfo student;
+        StudentPicture picture;
         static StudentForm()
         {
             client = new MongoClient();
             db = client.GetDatabase("ProxyKiller");
             studentInfo = db.GetCollection<StudentInfo>("students");
+            studentPicture = db.GetCollection<StudentPicture>("studentPicture");
         }
         public StudentForm(string user)
         {
             InitializeComponent();
             student = new StudentInfo();
+            picture = new StudentPicture();
             student = studentInfo.Find(n => n.UserName == user).First();
-            pictureBox2.ImageLocation = student.ImageLocation;
+            picture = studentPicture.Find(n => n.UserName == user).First();
+            pictureBox2.ImageLocation = picture.ImageLocations[0];
             label3.Text = student.Name;
             label1.Text = "Welcome " + student.UserName;
         }

@@ -6,17 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace ProxyKiller
 {
-    class StudentInfo
+    class StudentPicture
     {
         [BsonId]
         public string UserName { get; set; }
-        public string Gender { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public string MobileNo { get; set; }
-        public int Absent = 0;
+        public string[] ImageLocations { get; set; }
+        public StudentPicture()
+        {
+            ImageLocations = new string[4];
+        }
     }
 }
