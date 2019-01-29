@@ -32,27 +32,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.listView2 = new System.Windows.Forms.ListView();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.listView3 = new System.Windows.Forms.ListView();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.listView4 = new System.Windows.Forms.ListView();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.listView5 = new System.Windows.Forms.ListView();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.listView4 = new System.Windows.Forms.ListView();
-            this.listView5 = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -108,15 +108,14 @@
             this.panel1.Size = new System.Drawing.Size(401, 69);
             this.panel1.TabIndex = 12;
             // 
-            // label1
+            // listView1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Subject :";
+            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listView1.Location = new System.Drawing.Point(190, 13);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(195, 42);
+            this.listView1.TabIndex = 3;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // label2
             // 
@@ -128,6 +127,16 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "No of absents :";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Subject :";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
@@ -138,6 +147,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(401, 69);
             this.panel2.TabIndex = 13;
+            // 
+            // listView2
+            // 
+            this.listView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listView2.Location = new System.Drawing.Point(190, 13);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(195, 42);
+            this.listView2.TabIndex = 4;
+            this.listView2.UseCompatibleStateImageBehavior = false;
             // 
             // label4
             // 
@@ -170,6 +188,15 @@
             this.panel3.Size = new System.Drawing.Size(401, 69);
             this.panel3.TabIndex = 13;
             // 
+            // listView3
+            // 
+            this.listView3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listView3.Location = new System.Drawing.Point(190, 13);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(195, 42);
+            this.listView3.TabIndex = 5;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -201,6 +228,15 @@
             this.panel4.Size = new System.Drawing.Size(401, 69);
             this.panel4.TabIndex = 13;
             // 
+            // listView4
+            // 
+            this.listView4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listView4.Location = new System.Drawing.Point(190, 13);
+            this.listView4.Name = "listView4";
+            this.listView4.Size = new System.Drawing.Size(195, 42);
+            this.listView4.TabIndex = 6;
+            this.listView4.UseCompatibleStateImageBehavior = false;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -231,6 +267,15 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(401, 69);
             this.panel5.TabIndex = 13;
+            // 
+            // listView5
+            // 
+            this.listView5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listView5.Location = new System.Drawing.Point(190, 13);
+            this.listView5.Name = "listView5";
+            this.listView5.Size = new System.Drawing.Size(195, 42);
+            this.listView5.TabIndex = 7;
+            this.listView5.UseCompatibleStateImageBehavior = false;
             // 
             // label10
             // 
@@ -268,51 +313,7 @@
             this.button1.TabIndex = 15;
             this.button1.Text = "Apply";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listView1.Location = new System.Drawing.Point(190, 13);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(195, 42);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // listView2
-            // 
-            this.listView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listView2.Location = new System.Drawing.Point(190, 13);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(195, 42);
-            this.listView2.TabIndex = 4;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            // 
-            // listView3
-            // 
-            this.listView3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listView3.Location = new System.Drawing.Point(190, 13);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(195, 42);
-            this.listView3.TabIndex = 5;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            // 
-            // listView4
-            // 
-            this.listView4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listView4.Location = new System.Drawing.Point(190, 13);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(195, 42);
-            this.listView4.TabIndex = 6;
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            // 
-            // listView5
-            // 
-            this.listView5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listView5.Location = new System.Drawing.Point(190, 13);
-            this.listView5.Name = "listView5";
-            this.listView5.Size = new System.Drawing.Size(195, 42);
-            this.listView5.TabIndex = 7;
-            this.listView5.UseCompatibleStateImageBehavior = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // StudentForm
             // 

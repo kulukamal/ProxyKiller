@@ -20,6 +20,8 @@ namespace ProxyKiller
         static IMongoDatabase db;
         static IMongoCollection<StudentInfo> studentInfo;
         static IMongoCollection<StudentPicture> studentPicture;
+        static IMongoCollection<SubjectInfo> subjectInfo;
+        static IMongoCollection<RequestInfo> requestInfo;
         StudentInfo student;
         StudentPicture picture;
         static StudentForm()
@@ -28,6 +30,8 @@ namespace ProxyKiller
             db = client.GetDatabase("ProxyKiller");
             studentInfo = db.GetCollection<StudentInfo>("students");
             studentPicture = db.GetCollection<StudentPicture>("studentPicture");
+            subjectInfo = db.GetCollection<SubjectInfo>("subjectInfo");
+            requestInfo = db.GetCollection<RequestInfo>("requestInfo");
         }
         public StudentForm(string user)
         {
@@ -39,6 +43,12 @@ namespace ProxyKiller
             pictureBox2.ImageLocation = picture.ImageLocations[0];
             label3.Text = student.Name;
             label1.Text = "Welcome " + student.UserName;
+
+            var list = subjectInfo.AsQueryable().Where(n=>true).ToList();
+            List<string> subjectList = new List<string>();
+            foreach (var ele in list)
+                subjectList.Add(ele.SubjectId);
+            listBox1.DataSource = subjectList;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -54,6 +64,27 @@ namespace ProxyKiller
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string subjectId = listBox1.Items[listBox1.SelectedIndex].ToString();
+            RequestInfo request = new RequestInfo();
+            request.SubjectId = subjectId;
+            request.UserName = student.UserName;
+            request.UserNameSubjectId = student.UserName + subjectId;
+            try
+            {
+                requestInfo.InsertOne(request);
+                MessageBox.Show("Sucessfully Added");
+            }
+            catch
+            {
+                MessageBox.Show("Already Requested or enrolled!!");
+            }
+
+            
 
         }
     }
