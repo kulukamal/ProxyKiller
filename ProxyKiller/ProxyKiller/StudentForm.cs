@@ -16,18 +16,23 @@ namespace ProxyKiller
     public partial class StudentForm : Form
     {
 
-        static MongoClient client;
-        static IMongoDatabase db;
-        static IMongoCollection<StudentInfo> studentInfo;
-        static IMongoCollection<StudentPicture> studentPicture;
-        static IMongoCollection<SubjectInfo> subjectInfo;
-        static IMongoCollection<RequestInfo> requestInfo;
-        static IMongoCollection<StudentAttendance> studentAttendance;
+        MongoClient client;
+        IMongoDatabase db;
+        IMongoCollection<StudentInfo> studentInfo;
+        IMongoCollection<StudentPicture> studentPicture;
+        IMongoCollection<SubjectInfo> subjectInfo;
+        IMongoCollection<RequestInfo> requestInfo;
+        IMongoCollection<StudentAttendance> studentAttendance;
         StudentInfo student;
         StudentPicture picture;
         SubjectInfo subject;
         StudentAttendance attendance;
         static StudentForm()
+        {
+            
+            
+        }
+        public StudentForm(string user)
         {
             client = new MongoClient();
             db = client.GetDatabase("ProxyKiller");
@@ -35,10 +40,6 @@ namespace ProxyKiller
             studentPicture = db.GetCollection<StudentPicture>("studentPicture");
             subjectInfo = db.GetCollection<SubjectInfo>("subjectInfo");
             requestInfo = db.GetCollection<RequestInfo>("requestInfo");
-            
-        }
-        public StudentForm(string user)
-        {
             InitializeComponent();
             studentAttendance = db.GetCollection<StudentAttendance>(user);
             student = new StudentInfo();
@@ -58,6 +59,7 @@ namespace ProxyKiller
             listBox1.DataSource = subjectList;
 
             student = new StudentInfo();
+            student = studentInfo.AsQueryable().Where(n => n.UserName == user).First();
             subject = new SubjectInfo();
             attendance = new StudentAttendance();
             try

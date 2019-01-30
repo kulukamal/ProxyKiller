@@ -15,12 +15,12 @@ namespace ProxyKiller
 {
     public partial class TeacherForm : Form
     {
-        static MongoClient client;
-        static IMongoDatabase db;
-        static IMongoCollection<StudentInfo> studentInfo;
-        static IMongoCollection<StudentPicture> studentPicture;
-        static IMongoCollection<SubjectInfo> subjectInfo;
-        static IMongoCollection<RequestInfo> requestInfo;
+        MongoClient client;
+        IMongoDatabase db;
+        IMongoCollection<StudentInfo> studentInfo;
+        IMongoCollection<StudentPicture> studentPicture;
+        IMongoCollection<SubjectInfo> subjectInfo;
+        IMongoCollection<RequestInfo> requestInfo;
         IMongoCollection<SubjectAttendance> subjectAttendance1,subjectAttendance2,subjectAttendance3;
         IMongoCollection<StudentAttendance> studentAttendance1, studentAttendance2, studentAttendance3;
         StudentInfo student1,student2,student3;
@@ -33,6 +33,12 @@ namespace ProxyKiller
         public TeacherForm()
         {
             InitializeComponent();
+            client = new MongoClient();
+            db = client.GetDatabase("ProxyKiller");
+            studentInfo = db.GetCollection<StudentInfo>("students");
+            studentPicture = db.GetCollection<StudentPicture>("studentPicture");
+            subjectInfo = db.GetCollection<SubjectInfo>("subjectInfo");
+            requestInfo = db.GetCollection<RequestInfo>("requestInfo");
             var list = subjectInfo.AsQueryable().ToList();
             List<string> subjectList = new List<string>();
             foreach (var ele in list)
@@ -296,15 +302,7 @@ namespace ProxyKiller
             }
             
         }
-        static TeacherForm()
-        {
-            client = new MongoClient();
-            db = client.GetDatabase("ProxyKiller");
-            studentInfo = db.GetCollection<StudentInfo>("students");
-            studentPicture = db.GetCollection<StudentPicture>("studentPicture");
-            subjectInfo = db.GetCollection<SubjectInfo>("subjectInfo");
-            requestInfo = db.GetCollection<RequestInfo>("requestInfo");
-        }
+       
 
         private void label6_Click(object sender, EventArgs e)
         {
