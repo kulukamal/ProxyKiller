@@ -73,12 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangeAttendance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChangeAttendance.Designer.cs">
-      <DependentUpon>ChangeAttendance.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Buffer.cs" />
     <Compile Include="LoginCredential.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -96,6 +91,7 @@
     <Compile Include="StudentForm.Designer.cs">
       <DependentUpon>StudentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StudentMap.cs" />
     <Compile Include="StudentPicture.cs" />
     <Compile Include="StudentSignUp.cs">
       <SubType>Form</SubType>
@@ -124,9 +120,6 @@
     <Compile Include="TeacherForm.Designer.cs">
       <DependentUpon>TeacherForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ChangeAttendance.resx">
-      <DependentUpon>ChangeAttendance.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

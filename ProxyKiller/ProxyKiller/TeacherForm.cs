@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Diagnostics;
 using MongoDB.Driver.Core;
+using System.Threading;
 
 namespace ProxyKiller
 {
@@ -23,22 +25,30 @@ namespace ProxyKiller
         IMongoCollection<RequestInfo> requestInfo;
         IMongoCollection<SubjectAttendance> subjectAttendance1,subjectAttendance2,subjectAttendance3;
         IMongoCollection<StudentAttendance> studentAttendance1, studentAttendance2, studentAttendance3;
+        IMongoCollection<Buffer> buffer;
+        IMongoCollection<StudentMap> studentMap;
         StudentInfo student1,student2,student3;
         StudentPicture picture1,picture2,picture3;
         SubjectInfo subject1,subject2,subject3;
         RequestInfo request1 , request2 , request3 ;
         SubjectAttendance attendance1, attendance2, attendance3;
         StudentAttendance att1, att2, att3;
-        
+        StudentMap tmp;
+        Buffer buff;
         public TeacherForm()
         {
             InitializeComponent();
+            panel4.Hide();
             client = new MongoClient();
             db = client.GetDatabase("ProxyKiller");
             studentInfo = db.GetCollection<StudentInfo>("students");
             studentPicture = db.GetCollection<StudentPicture>("studentPicture");
             subjectInfo = db.GetCollection<SubjectInfo>("subjectInfo");
             requestInfo = db.GetCollection<RequestInfo>("requestInfo");
+            buffer = db.GetCollection<Buffer>("buffer");
+            studentMap = db.GetCollection<StudentMap>("studentMap");
+            tmp = new StudentMap();
+            buff = new Buffer();
             var list = subjectInfo.AsQueryable().ToList();
             List<string> subjectList = new List<string>();
             foreach (var ele in list)
@@ -49,7 +59,26 @@ namespace ProxyKiller
             RefreshForm();
 
         }
-
+        private void AddPerson(Object std)
+        {
+            StudentInfo student = (StudentInfo)std;
+            buff.UserName = student.UserName;
+            buffer.InsertOne(buff);
+            string result;
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = @"C:\Program Files (x86)\Python37-32\python.exe";
+            start.Arguments = @"C:\ProxyKiller\ProxyKiller\ProxyKiller\AddPerson.py";
+            start.UseShellExecute = false;
+            start.RedirectStandardOutput = true;
+            using (Process process = Process.Start(start))
+            {
+                using (System.IO.StreamReader reader = process.StandardOutput)
+                {
+                    result = reader.ReadToEnd();
+                    Console.WriteLine(result);
+                }
+            }
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             try
@@ -67,7 +96,21 @@ namespace ProxyKiller
 
                 studentAttendance3 = db.GetCollection<StudentAttendance>(student3.UserName);
                 studentAttendance3.InsertOne(att3);
-
+                int count=0;
+                try
+                {
+                    count = (int)studentMap.Find(n => n.UserName == student3.UserName).CountDocuments();
+                }
+                catch { }
+                if (count == 0)
+                {
+                    Thread t1 = new Thread(AddPerson);
+                    panel4.Show();
+                    t1.Start(student3);
+                    t1.Join();
+                    panel4.Hide();
+                }
+                
                 requestInfo.DeleteOne(n => n.UserNameSubjectId == request3.UserNameSubjectId);
                 RefreshForm();
 
@@ -91,6 +134,7 @@ namespace ProxyKiller
 
         private void button25_Click(object sender, EventArgs e)
         {
+            
             SubjectInfo subject = new SubjectInfo();
             if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0)
             {
@@ -116,6 +160,7 @@ namespace ProxyKiller
                 subjectList.Add(ele.SubjectName + " ( " + ele.SubjectId + " ) ");
             }
             listBox1.DataSource = subjectList;
+            
         }
 
         private void button4_Click_1(object sender, EventArgs e)
@@ -143,21 +188,36 @@ namespace ProxyKiller
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
             try
             {
+
                 attendance1 = new SubjectAttendance();
                 attendance1.UserName = student1.UserName;
                 attendance1.Name = student1.Name;
-
                 att1 = new StudentAttendance();
                 att1.SubjectId = subject1.SubjectId;
                 att1.SubjectName = subject1.SubjectName;
-                
                 subjectAttendance1 = db.GetCollection<SubjectAttendance>(subject1.SubjectId);
                 subjectAttendance1.InsertOne(attendance1);
-
                 studentAttendance1 = db.GetCollection<StudentAttendance>(student1.UserName);
                 studentAttendance1.InsertOne(att1);
+
+                int count = 0;
+                try
+                {
+                    count = (int)studentMap.Find(n => n.UserName == student1.UserName).CountDocuments();
+                }
+                catch { }
+                if (count == 0)
+                {
+                    Thread t1 = new Thread(AddPerson);
+                    panel4.Show();
+                    t1.Start(student1);
+                    
+                    t1.Join();
+                    panel4.Hide();
+                }
 
                 requestInfo.DeleteOne(n => n.UserNameSubjectId == request1.UserNameSubjectId);
                 RefreshForm();
@@ -196,7 +256,21 @@ namespace ProxyKiller
 
                 studentAttendance2 = db.GetCollection<StudentAttendance>(student2.UserName);
                 studentAttendance2.InsertOne(att2);
-
+                int count = 0;
+                try
+                {
+                    count = (int)studentMap.Find(n => n.UserName == student2.UserName).CountDocuments();
+                }
+                catch { }
+                if (count == 0)
+                {
+                    Thread t1 = new Thread(AddPerson);
+                    panel4.Show();
+                    t1.Start(student2);
+                    
+                    t1.Join();
+                    panel4.Hide();
+                }
                 requestInfo.DeleteOne(n => n.UserNameSubjectId == request2.UserNameSubjectId);
                 RefreshForm();
 
@@ -220,7 +294,7 @@ namespace ProxyKiller
 
         void RefreshForm()
         {
-           
+            panel4.Show();
 
             try
             {
@@ -237,8 +311,11 @@ namespace ProxyKiller
                 pictureBox3.ImageLocation = picture1.ImageLocations[1];
                 pictureBox4.ImageLocation = picture1.ImageLocations[2];
                 pictureBox5.ImageLocation = picture1.ImageLocations[3];
+
                 
-                 
+
+                
+
             }
             catch
             {
@@ -300,7 +377,7 @@ namespace ProxyKiller
                 pictureBox12.ImageLocation = "NA";
                 pictureBox13.ImageLocation = "NA";
             }
-            
+            panel4.Hide();
         }
        
 
