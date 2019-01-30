@@ -32,27 +32,28 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listView2 = new System.Windows.Forms.ListView();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.listView3 = new System.Windows.Forms.ListView();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.listView4 = new System.Windows.Forms.ListView();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.listView5 = new System.Windows.Forms.ListView();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.listBox6 = new System.Windows.Forms.ListBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -80,7 +81,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(66, 200);
+            this.label3.Location = new System.Drawing.Point(12, 198);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 11;
@@ -92,7 +93,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(16, 37);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(150, 150);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
@@ -100,22 +101,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Controls.Add(this.listView1);
+            this.panel1.Controls.Add(this.listBox2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(211, 36);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(401, 69);
             this.panel1.TabIndex = 12;
-            // 
-            // listView1
-            // 
-            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listView1.Location = new System.Drawing.Point(190, 13);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(195, 42);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // label2
             // 
@@ -140,22 +132,13 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Controls.Add(this.listView2);
+            this.panel2.Controls.Add(this.listBox3);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(211, 116);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(401, 69);
             this.panel2.TabIndex = 13;
-            // 
-            // listView2
-            // 
-            this.listView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listView2.Location = new System.Drawing.Point(190, 13);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(195, 42);
-            this.listView2.TabIndex = 4;
-            this.listView2.UseCompatibleStateImageBehavior = false;
             // 
             // label4
             // 
@@ -180,22 +163,13 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Silver;
-            this.panel3.Controls.Add(this.listView3);
+            this.panel3.Controls.Add(this.listBox4);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Location = new System.Drawing.Point(211, 198);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(401, 69);
             this.panel3.TabIndex = 13;
-            // 
-            // listView3
-            // 
-            this.listView3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listView3.Location = new System.Drawing.Point(190, 13);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(195, 42);
-            this.listView3.TabIndex = 5;
-            this.listView3.UseCompatibleStateImageBehavior = false;
             // 
             // label6
             // 
@@ -220,22 +194,13 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Silver;
-            this.panel4.Controls.Add(this.listView4);
+            this.panel4.Controls.Add(this.listBox5);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label9);
             this.panel4.Location = new System.Drawing.Point(211, 282);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(401, 69);
             this.panel4.TabIndex = 13;
-            // 
-            // listView4
-            // 
-            this.listView4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listView4.Location = new System.Drawing.Point(190, 13);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(195, 42);
-            this.listView4.TabIndex = 6;
-            this.listView4.UseCompatibleStateImageBehavior = false;
             // 
             // label8
             // 
@@ -260,22 +225,13 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Silver;
-            this.panel5.Controls.Add(this.listView5);
+            this.panel5.Controls.Add(this.listBox6);
             this.panel5.Controls.Add(this.label10);
             this.panel5.Controls.Add(this.label11);
             this.panel5.Location = new System.Drawing.Point(211, 366);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(401, 69);
             this.panel5.TabIndex = 13;
-            // 
-            // listView5
-            // 
-            this.listView5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listView5.Location = new System.Drawing.Point(190, 13);
-            this.listView5.Name = "listView5";
-            this.listView5.Size = new System.Drawing.Size(195, 42);
-            this.listView5.TabIndex = 7;
-            this.listView5.UseCompatibleStateImageBehavior = false;
             // 
             // label10
             // 
@@ -300,14 +256,14 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(16, 239);
+            this.listBox1.Location = new System.Drawing.Point(16, 294);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(150, 95);
             this.listBox1.TabIndex = 14;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(54, 349);
+            this.button1.Location = new System.Drawing.Point(54, 404);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 15;
@@ -315,12 +271,68 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // listBox2
+            // 
+            this.listBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(176, 13);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(205, 43);
+            this.listBox2.TabIndex = 3;
+            // 
+            // listBox3
+            // 
+            this.listBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(176, 13);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(205, 43);
+            this.listBox3.TabIndex = 4;
+            // 
+            // listBox4
+            // 
+            this.listBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.Location = new System.Drawing.Point(176, 13);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(205, 43);
+            this.listBox4.TabIndex = 5;
+            // 
+            // listBox5
+            // 
+            this.listBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.Location = new System.Drawing.Point(176, 12);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(205, 43);
+            this.listBox5.TabIndex = 6;
+            // 
+            // listBox6
+            // 
+            this.listBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listBox6.FormattingEnabled = true;
+            this.listBox6.Location = new System.Drawing.Point(176, 13);
+            this.listBox6.Name = "listBox6";
+            this.listBox6.Size = new System.Drawing.Size(205, 43);
+            this.listBox6.TabIndex = 7;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(13, 267);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(66, 16);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "Subjects :";
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(624, 441);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.panel5);
@@ -370,10 +382,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.ListView listView3;
-        private System.Windows.Forms.ListView listView4;
-        private System.Windows.Forms.ListView listView5;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.ListBox listBox6;
+        private System.Windows.Forms.Label label12;
     }
 }

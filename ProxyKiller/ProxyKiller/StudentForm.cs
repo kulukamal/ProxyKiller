@@ -22,8 +22,11 @@ namespace ProxyKiller
         static IMongoCollection<StudentPicture> studentPicture;
         static IMongoCollection<SubjectInfo> subjectInfo;
         static IMongoCollection<RequestInfo> requestInfo;
+        static IMongoCollection<StudentAttendance> studentAttendance;
         StudentInfo student;
         StudentPicture picture;
+        SubjectInfo subject;
+        StudentAttendance attendance;
         static StudentForm()
         {
             client = new MongoClient();
@@ -32,23 +35,106 @@ namespace ProxyKiller
             studentPicture = db.GetCollection<StudentPicture>("studentPicture");
             subjectInfo = db.GetCollection<SubjectInfo>("subjectInfo");
             requestInfo = db.GetCollection<RequestInfo>("requestInfo");
+            
         }
         public StudentForm(string user)
         {
             InitializeComponent();
+            studentAttendance = db.GetCollection<StudentAttendance>(user);
             student = new StudentInfo();
             picture = new StudentPicture();
             student = studentInfo.Find(n => n.UserName == user).First();
             picture = studentPicture.Find(n => n.UserName == user).First();
             pictureBox2.ImageLocation = picture.ImageLocations[0];
             label3.Text = student.Name;
-            label1.Text = "Welcome " + student.UserName;
 
             var list = subjectInfo.AsQueryable().Where(n=>true).ToList();
             List<string> subjectList = new List<string>();
             foreach (var ele in list)
-                subjectList.Add(ele.SubjectId);
+            {
+                if(studentAttendance.Find(n=>n.SubjectId==ele.SubjectId).CountDocuments()==0)
+                    subjectList.Add(ele.SubjectId);
+            }
             listBox1.DataSource = subjectList;
+
+            student = new StudentInfo();
+            subject = new SubjectInfo();
+            attendance = new StudentAttendance();
+            try
+            {
+
+                attendance = studentAttendance.AsQueryable().First();
+                label1.Text = label1.Text + " " + attendance.SubjectName;
+                label2.Text = label2.Text + " " + attendance.Absent.ToString();
+
+                listBox2.DataSource = attendance.listOfAbsents; 
+            }
+            catch
+            {
+                label1.Text = label1.Text + " NA ";
+                label2.Text = label2.Text + " NA ";
+                listBox2.DataSource = null;
+            }
+            try
+            {
+
+                attendance = studentAttendance.AsQueryable().Skip(1).First();
+                label5.Text = label5.Text + " " + attendance.SubjectName;
+                label4.Text = label4.Text + " " + attendance.Absent.ToString();
+
+                listBox3.DataSource = attendance.listOfAbsents;
+            }
+            catch
+            {
+                label5.Text = label5.Text + " NA ";
+                label4.Text = label4.Text + " NA ";
+                listBox3.DataSource = null;
+            }
+            try
+            {
+
+                attendance = studentAttendance.AsQueryable().Skip(2).First();
+                label7.Text = label7.Text + " " + attendance.SubjectName;
+                label6.Text = label6.Text + " " + attendance.Absent.ToString();
+
+                listBox4.DataSource = attendance.listOfAbsents;
+            }
+            catch
+            {
+                label7.Text = label7.Text + " NA ";
+                label6.Text = label6.Text + " NA ";
+                listBox4.DataSource = null;
+            }
+            try
+            {
+
+                attendance = studentAttendance.AsQueryable().Skip(3).First();
+                label9.Text = label9.Text + " " + attendance.SubjectName;
+                label8.Text = label8.Text + " " + attendance.Absent.ToString();
+
+                listBox5.DataSource = attendance.listOfAbsents;
+            }
+            catch
+            {
+                label9.Text = label9.Text + " NA ";
+                label8.Text = label8.Text + " NA ";
+                listBox5.DataSource = null;
+            }
+            try
+            {
+
+                attendance = studentAttendance.AsQueryable().Skip(4).First();
+                label11.Text = label11.Text + " " + attendance.SubjectName;
+                label10.Text = label10.Text + " " + attendance.Absent.ToString();
+
+                listBox6.DataSource = attendance.listOfAbsents;
+            }
+            catch
+            {
+                label11.Text = label11.Text + " NA ";
+                label10.Text = label10.Text + " NA ";
+                listBox6.DataSource = null;
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -87,5 +173,6 @@ namespace ProxyKiller
             
 
         }
+        
     }
 }

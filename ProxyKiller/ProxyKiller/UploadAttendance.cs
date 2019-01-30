@@ -13,23 +13,12 @@ namespace ProxyKiller
 {
     public partial class UploadAttendance : Form
     {
-        public UploadAttendance(string user)
+        public UploadAttendance(string subject)
         {
             InitializeComponent();
-            label1.Text = "WelCome " + user;
+            label1.Text = "Subject : " + subject;
         }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(result == DialogResult.Yes)
-            {
-                LoginForm l = new LoginForm();
-                l.Show();
-                this.Hide();
-            }
-
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {

@@ -18,18 +18,40 @@ namespace ProxyKiller
         static IMongoDatabase db;
         static IMongoCollection<SubjectAttendance> subjects;
         static MongoClient client;
-        public Subject(string str)
+        List<SubjectAttendance> list;
+        public Subject(string subjectId)
         {
             InitializeComponent();
-            subjects = db.GetCollection<SubjectAttendance>(str);
-            var list = subjects.Find<SubjectAttendance>(n=>true).ToList();
+            subjects = db.GetCollection<SubjectAttendance>(subjectId);
+            list = subjects.Find<SubjectAttendance>(n=>true).ToList();
             var bindList = new BindingList<SubjectAttendance>(list);
             dataGridView1.DataSource = bindList;
+            label1.Text = "Subject : " + subjectId;
         }
         static Subject()
         {
             client = new MongoClient();
             db = client.GetDatabase("ProxyKiller");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int index;
+            try
+            {
+               index = dataGridView1.SelectedRows[0].Index;
+               MessageBox.Show(list[index].UserName);
+            }
+            catch { }
+            try
+            {
+                index = dataGridView1.CurrentCell.RowIndex;
+                MessageBox.Show(list[index].UserName);
+            }
+            catch { }
+            
+            
+            
         }
     }
 }
