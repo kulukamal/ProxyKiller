@@ -16,6 +16,7 @@ namespace ProxyKiller
     public partial class LoginForm : Form
     {
         static IMongoDatabase db;
+        static LoginForm _instance;
         static IMongoCollection<LoginCredential> loginCredential;
         static MongoClient client;
 
@@ -31,6 +32,12 @@ namespace ProxyKiller
             InitializeComponent();
         }
 
+        public static LoginForm GetInstance()
+        {
+            if (_instance == null) _instance = new LoginForm();
+            return _instance;
+        }
+
         //login button
         private void button2_Click(object sender, EventArgs e)
         {
@@ -42,17 +49,16 @@ namespace ProxyKiller
                 var user = userList.First();
                 if (user.Password == password)
                 {
+                    textBox1.Text = textBox2.Text = String.Empty;
                     if(user.Type == "teacher")
                     {
-                        TeacherForm t = new TeacherForm();
-                        this.Hide();
-                        t.Show();
+                        TeacherForm t = TeacherForm.GetInstance();
+                        MainContainer.LoadForm(t);
                     }
                     else
                     {
-                        StudentForm s = new StudentForm(user.UserName);
-                        this.Hide();
-                        s.Show();
+                        StudentForm s = StudentForm.GetInstance(user.UserName);
+                        MainContainer.LoadForm(s);
                     }
                 }
                 else
@@ -70,8 +76,8 @@ namespace ProxyKiller
         //sign up link
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            StudentSignUp s = new StudentSignUp();
-            s.Show();
+            StudentSignUp s = StudentSignUp.GetInstnce();
+            MainContainer.LoadForm(s);
         }
     }
 }

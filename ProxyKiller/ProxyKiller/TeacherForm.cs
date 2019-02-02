@@ -35,6 +35,7 @@ namespace ProxyKiller
         StudentAttendance att1, att2, att3;
         StudentMap tmp;
         Buffer buff;
+        static TeacherForm _instance;
 
         //constructor
         public TeacherForm()
@@ -60,6 +61,15 @@ namespace ProxyKiller
             listBox1.DataSource = subjectList;
             RefreshForm();
 
+        }
+        public static TeacherForm GetInstance()
+        {
+            if (_instance == null) _instance = new TeacherForm();
+            else
+            {
+                _instance.RefreshForm();
+            }
+            return _instance;
         }
 
         //add person to Person Group in Face Api using python
@@ -431,9 +441,8 @@ namespace ProxyKiller
             DialogResult result = MessageBox.Show("Are you sure?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                LoginForm l = new LoginForm();
-                l.Show();
-                this.Hide();
+                LoginForm l =LoginForm.GetInstance();
+                MainContainer.LoadForm(l);
             }
         }
         

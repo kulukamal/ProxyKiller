@@ -17,7 +17,9 @@ namespace ProxyKiller
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            MainContainer form = MainContainer.GetInstance();
+            MainContainer.LoadForm(new LoginForm());
+            Application.Run(form);
         }
     }
 }

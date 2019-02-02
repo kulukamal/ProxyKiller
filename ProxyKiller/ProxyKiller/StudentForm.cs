@@ -28,6 +28,22 @@ namespace ProxyKiller
         SubjectInfo subject;
         StudentAttendance attendance;
 
+        static StudentForm _instance;
+        static string _userName;
+        static public StudentForm GetInstance(string userName)
+        {
+            if (_instance == null) {
+                _instance = new StudentForm(userName);
+                _userName = userName;
+            }
+            else if (_userName != userName)
+            {
+                _instance = new StudentForm(userName);
+                _userName = userName;
+            }
+            return _instance;
+        }
+
         //constructor
         public StudentForm(string user)
         {
@@ -142,20 +158,24 @@ namespace ProxyKiller
             DialogResult result = MessageBox.Show("Are you sure?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                LoginForm l = new LoginForm();
-                l.Show();
-                this.Hide();
+                LoginForm l = LoginForm.GetInstance();
+                MainContainer.LoadForm(l);
             }
         }
 
         //apply for subject button
         private void button1_Click(object sender, EventArgs e)
         {
-            string subjectId = listBox1.Items[listBox1.SelectedIndex].ToString();
             RequestInfo request = new RequestInfo();
-            request.SubjectId = subjectId;
-            request.UserName = student.UserName;
-            request.UserNameSubjectId = student.UserName + subjectId;
+            try
+            {
+                string subjectId = listBox1.Items[listBox1.SelectedIndex].ToString();
+                
+                request.SubjectId = subjectId;
+                request.UserName = student.UserName;
+                request.UserNameSubjectId = student.UserName + subjectId;
+            }
+            catch { }
             try
             {
                 requestInfo.InsertOne(request);

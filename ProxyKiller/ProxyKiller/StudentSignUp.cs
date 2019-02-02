@@ -26,6 +26,13 @@ namespace ProxyKiller
         static IMongoCollection<LoginCredential> loginCredential;
         static IMongoCollection<StudentPicture> studentPicture;
 
+        static StudentSignUp _instance;
+        static public StudentSignUp GetInstnce()
+        {
+            if (_instance == null) _instance = new StudentSignUp();
+            return _instance;
+        }
+
         public StudentSignUp()
         {
             InitializeComponent();
@@ -59,7 +66,7 @@ namespace ProxyKiller
             }
             
         }
-        //upload 2
+        //sign up button
         private void button2_Click(object sender, EventArgs e)
         {
             foreach(Control c in Controls)
@@ -120,9 +127,12 @@ namespace ProxyKiller
             loginCredential.InsertOne(user);
             studentPicture.InsertOne(picture);
 
-            StudentForm s = new StudentForm(user.UserName);
-            this.Hide();
-            s.Show();
+            textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text = String.Empty;
+            pictureBox1.ImageLocation = pictureBox2.ImageLocation = pictureBox3.ImageLocation = pictureBox4.ImageLocation = defaultImage;
+            
+
+            StudentForm s = StudentForm.GetInstance(user.UserName);
+            MainContainer.LoadForm(s);
             
 
         }
@@ -149,7 +159,7 @@ namespace ProxyKiller
             }
         }
 
-        //sign up button
+        //button 2
         private void button5_Click(object sender, EventArgs e)
         {
             OpenFileDialog img = new OpenFileDialog();
@@ -159,6 +169,20 @@ namespace ProxyKiller
                 picture.ImageLocations[3] = img.FileName;
                 pictureBox4.ImageLocation = img.FileName;
             }
+        }
+
+        //back to login link
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LoginForm l = LoginForm.GetInstance();
+            MainContainer.LoadForm(l);
+        }
+        //clear button
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text = String.Empty;
+            pictureBox1.ImageLocation = pictureBox2.ImageLocation = pictureBox3.ImageLocation = pictureBox4.ImageLocation = defaultImage;
+
         }
     }
 }
