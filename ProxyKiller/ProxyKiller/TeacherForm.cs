@@ -35,6 +35,8 @@ namespace ProxyKiller
         StudentAttendance att1, att2, att3;
         StudentMap tmp;
         Buffer buff;
+
+        //constructor
         public TeacherForm()
         {
             InitializeComponent();
@@ -59,6 +61,8 @@ namespace ProxyKiller
             RefreshForm();
 
         }
+
+        //add person to Person Group in Face Api using python
         private void AddPerson(Object std)
         {
             StudentInfo student = (StudentInfo)std;
@@ -78,60 +82,13 @@ namespace ProxyKiller
                     Console.WriteLine(result);
                 }
             }
-        }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                attendance3 = new SubjectAttendance();
-                attendance3.UserName = student3.UserName;
-                attendance3.Name = student3.Name;
-
-                att3 = new StudentAttendance();
-                att3.SubjectId = subject3.SubjectId;
-                att3.SubjectName = subject3.SubjectName;
-
-                subjectAttendance3 = db.GetCollection<SubjectAttendance>(subject3.SubjectId);
-                subjectAttendance3.InsertOne(attendance3);
-
-                studentAttendance3 = db.GetCollection<StudentAttendance>(student3.UserName);
-                studentAttendance3.InsertOne(att3);
-                int count=0;
-                try
-                {
-                    count = (int)studentMap.Find(n => n.UserName == student3.UserName).CountDocuments();
-                }
-                catch { }
-                if (count == 0)
-                {
-                    Thread t1 = new Thread(AddPerson);
-                    panel4.Show();
-                    t1.Start(student3);
-                    t1.Join();
-                    panel4.Hide();
-                }
-                
-                requestInfo.DeleteOne(n => n.UserNameSubjectId == request3.UserNameSubjectId);
-                RefreshForm();
-
-            }
-            catch
-            {
-
-            }
+            
+            
         }
 
-        private void button11_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                requestInfo.DeleteOne(n => n.UserNameSubjectId == request3.UserNameSubjectId);
-                RefreshForm();
-            }
-            catch
-            { }
-        }
+       
 
+        //subject add button
         private void button25_Click(object sender, EventArgs e)
         {
             
@@ -163,6 +120,7 @@ namespace ProxyKiller
             
         }
 
+        //upload attendance of selected subject button
         private void button4_Click_1(object sender, EventArgs e)
         {
             string tmpString=listBox1.Items[listBox1.SelectedIndex].ToString();
@@ -175,6 +133,7 @@ namespace ProxyKiller
             upload.ShowDialog();
         }
 
+        //view attendance of selected subject
         private void button5_Click(object sender, EventArgs e)
         {
             string tmpString = listBox1.Items[listBox1.SelectedIndex].ToString();
@@ -186,22 +145,14 @@ namespace ProxyKiller
             subjectAttendance.ShowDialog();
         }
 
+        //panel1 aprove button
         private void button1_Click(object sender, EventArgs e)
         {
            
             try
             {
 
-                attendance1 = new SubjectAttendance();
-                attendance1.UserName = student1.UserName;
-                attendance1.Name = student1.Name;
-                att1 = new StudentAttendance();
-                att1.SubjectId = subject1.SubjectId;
-                att1.SubjectName = subject1.SubjectName;
-                subjectAttendance1 = db.GetCollection<SubjectAttendance>(subject1.SubjectId);
-                subjectAttendance1.InsertOne(attendance1);
-                studentAttendance1 = db.GetCollection<StudentAttendance>(student1.UserName);
-                studentAttendance1.InsertOne(att1);
+                if (student1 == null) throw new Exception();
 
                 int count = 0;
                 try
@@ -213,13 +164,32 @@ namespace ProxyKiller
                 {
                     Thread t1 = new Thread(AddPerson);
                     panel4.Show();
-                    t1.Start(student1);
+                        t1.Start(student1);
+                        t1.Join();
+                        buffer = db.GetCollection<Buffer>("buffer");
+                        if (buffer.Find(n => true).CountDocuments() != 0)
+                        {
+                            buffer.DeleteMany(n => true);
+                            throw new Exception();
+                        }
+                       
                     
-                    t1.Join();
-                    panel4.Hide();
                 }
 
+                attendance1 = new SubjectAttendance();
+                attendance1.UserName = student1.UserName;
+                attendance1.Name = student1.Name;
+                att1 = new StudentAttendance();
+                att1.SubjectId = subject1.SubjectId;
+                att1.SubjectName = subject1.SubjectName;
+                subjectAttendance1 = db.GetCollection<SubjectAttendance>(subject1.SubjectId);
+                subjectAttendance1.InsertOne(attendance1);
+                studentAttendance1 = db.GetCollection<StudentAttendance>(student1.UserName);
+                studentAttendance1.InsertOne(att1);
                 requestInfo.DeleteOne(n => n.UserNameSubjectId == request1.UserNameSubjectId);
+
+                MessageBox.Show("Operation Sucessfull!");
+                panel4.Hide();
                 RefreshForm();
 
             }
@@ -228,6 +198,7 @@ namespace ProxyKiller
 
             }
         }
+        //panel1 reject button
         private void button9_Click_1(object sender, EventArgs e)
         {
             try
@@ -239,10 +210,33 @@ namespace ProxyKiller
             { }
         }
 
+        //panel2 aprove button
         private void button2_Click(object sender, EventArgs e)
         {
             try
             {
+                if (student2 == null) throw new Exception();
+                int count = 0;
+                try
+                {
+                    count = (int)studentMap.Find(n => n.UserName == student2.UserName).CountDocuments();
+                }
+                catch { }
+                if (count == 0)
+                {
+                    Thread t1 = new Thread(AddPerson);
+                    panel4.Show();
+                        t1.Start(student2);
+                        t1.Join();
+                        buffer = db.GetCollection<Buffer>("buffer");
+                        if (buffer.Find(n => true).CountDocuments() != 0)
+                        {
+                            buffer.DeleteMany(n => true);
+                            throw new Exception();
+                        }
+                    
+                    
+                }
                 attendance2 = new SubjectAttendance();
                 attendance2.UserName = student2.UserName;
                 attendance2.Name = student2.Name;
@@ -256,22 +250,9 @@ namespace ProxyKiller
 
                 studentAttendance2 = db.GetCollection<StudentAttendance>(student2.UserName);
                 studentAttendance2.InsertOne(att2);
-                int count = 0;
-                try
-                {
-                    count = (int)studentMap.Find(n => n.UserName == student2.UserName).CountDocuments();
-                }
-                catch { }
-                if (count == 0)
-                {
-                    Thread t1 = new Thread(AddPerson);
-                    panel4.Show();
-                    t1.Start(student2);
-                    
-                    t1.Join();
-                    panel4.Hide();
-                }
                 requestInfo.DeleteOne(n => n.UserNameSubjectId == request2.UserNameSubjectId);
+                MessageBox.Show("Operation Sucessfull!");
+                panel4.Hide();
                 RefreshForm();
 
             }
@@ -280,6 +261,7 @@ namespace ProxyKiller
 
             }
         }
+        //panel2 reject button
         private void button10_Click(object sender, EventArgs e)
         {
             try
@@ -291,7 +273,70 @@ namespace ProxyKiller
             { }
         }
 
+        //panel3 aprove button
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (student3 == null) throw new Exception();
+                int count = 0;
+                try
+                {
+                    count = (int)studentMap.Find(n => n.UserName == student3.UserName).CountDocuments();
+                }
+                catch { }
+                if (count == 0)
+                {
+                    Thread t1 = new Thread(AddPerson);
+                    panel4.Show();
+                        t1.Start(student3);
+                        t1.Join();
+                        buffer = db.GetCollection<Buffer>("buffer");
+                        if (buffer.Find(n => true).CountDocuments() != 0)
+                        {
+                            buffer.DeleteMany(n => true);
+                            throw new Exception();
+                        }
+                     
+                }
+                attendance3 = new SubjectAttendance();
+                attendance3.UserName = student3.UserName;
+                attendance3.Name = student3.Name;
 
+                att3 = new StudentAttendance();
+                att3.SubjectId = subject3.SubjectId;
+                att3.SubjectName = subject3.SubjectName;
+
+                subjectAttendance3 = db.GetCollection<SubjectAttendance>(subject3.SubjectId);
+                subjectAttendance3.InsertOne(attendance3);
+
+                studentAttendance3 = db.GetCollection<StudentAttendance>(student3.UserName);
+                studentAttendance3.InsertOne(att3);
+                requestInfo.DeleteOne(n => n.UserNameSubjectId == request3.UserNameSubjectId);
+                MessageBox.Show("Operation Sucessfull!");
+                panel4.Hide();
+
+                RefreshForm();
+
+            }
+            catch
+            {
+
+            }
+        }
+        //panel3 reject button
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                requestInfo.DeleteOne(n => n.UserNameSubjectId == request3.UserNameSubjectId);
+                RefreshForm();
+            }
+            catch
+            { }
+        }
+
+        //Refresh form
         void RefreshForm()
         {
             panel4.Show();
@@ -379,31 +424,8 @@ namespace ProxyKiller
             }
             panel4.Hide();
         }
-       
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            UploadAttendance obj = new UploadAttendance("tmp");
-            obj.Show();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            UploadAttendance obj = new UploadAttendance("tmp");
-            obj.Show();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            UploadAttendance obj = new UploadAttendance("tmp");
-            obj.Show();
-        }
-
+        //logout link
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

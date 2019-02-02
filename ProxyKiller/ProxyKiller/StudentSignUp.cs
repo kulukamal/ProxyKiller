@@ -25,6 +25,7 @@ namespace ProxyKiller
         static IMongoCollection<StudentInfo> studentInfo;
         static IMongoCollection<LoginCredential> loginCredential;
         static IMongoCollection<StudentPicture> studentPicture;
+
         public StudentSignUp()
         {
             InitializeComponent();
@@ -45,6 +46,8 @@ namespace ProxyKiller
             studentPicture = db.GetCollection<StudentPicture>("studentPicture");
             
         }
+
+        //upload 1
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog img = new OpenFileDialog();
@@ -56,7 +59,7 @@ namespace ProxyKiller
             }
             
         }
-
+        //upload 2
         private void button2_Click(object sender, EventArgs e)
         {
             foreach(Control c in Controls)
@@ -123,7 +126,7 @@ namespace ProxyKiller
             
 
         }
-
+        //upload 3
         private void button3_Click(object sender, EventArgs e)
         {
             OpenFileDialog img = new OpenFileDialog();
@@ -134,7 +137,7 @@ namespace ProxyKiller
                 pictureBox2.ImageLocation = img.FileName;
             }
         }
-
+        //upload 4
         private void button4_Click(object sender, EventArgs e)
         {
             OpenFileDialog img = new OpenFileDialog();
@@ -146,6 +149,7 @@ namespace ProxyKiller
             }
         }
 
+        //sign up button
         private void button5_Click(object sender, EventArgs e)
         {
             OpenFileDialog img = new OpenFileDialog();

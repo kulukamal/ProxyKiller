@@ -73,7 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttendanceMap.cs" />
     <Compile Include="Buffer.cs" />
+    <Compile Include="ImageBuffer.cs" />
     <Compile Include="LoginCredential.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>

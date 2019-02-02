@@ -18,6 +18,7 @@ namespace ProxyKiller
         static IMongoDatabase db;
         static IMongoCollection<LoginCredential> loginCredential;
         static MongoClient client;
+
         static LoginForm()
         {
             client = new MongoClient();
@@ -30,6 +31,7 @@ namespace ProxyKiller
             InitializeComponent();
         }
 
+        //login button
         private void button2_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text;
@@ -65,10 +67,10 @@ namespace ProxyKiller
             
         }
 
+        //sign up link
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             StudentSignUp s = new StudentSignUp();
-            this.Hide();
             s.Show();
         }
     }

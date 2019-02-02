@@ -27,11 +27,8 @@ namespace ProxyKiller
         StudentPicture picture;
         SubjectInfo subject;
         StudentAttendance attendance;
-        static StudentForm()
-        {
-            
-            
-        }
+
+        //constructor
         public StudentForm(string user)
         {
             client = new MongoClient();
@@ -139,6 +136,7 @@ namespace ProxyKiller
             }
         }
 
+        //logout link
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -150,11 +148,7 @@ namespace ProxyKiller
             }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //apply for subject button
         private void button1_Click(object sender, EventArgs e)
         {
             string subjectId = listBox1.Items[listBox1.SelectedIndex].ToString();

@@ -8,16 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProxyKiller
 {
-    class SubjectAttendance
+    class AttendanceMap
     {
         [BsonId]
         public string UserName { get; set; }
-        public string Name { get; set; }
-        public int Absent { get; set; }
-        public List<DateTime> listOfAbsents { get; set; }
-        public SubjectAttendance()
-        {
-            listOfAbsents = new List<DateTime>();
-        }
+        public int Buffer { get; set; }
     }
 }

@@ -11,18 +11,14 @@ PERSON_GROUP_ID = 'proxykiller'
 BASE_URL = 'https://centralindia.api.cognitive.microsoft.com/face/v1.0'  # Replace with your regional Base URL
 CF.BaseUrl.set(BASE_URL)
 
-CF.person_group.delete(PERSON_GROUP_ID)
-CF.person_group.create(PERSON_GROUP_ID)
-
 client = pymongo.MongoClient()
 db = client['ProxyKiller']
 buffer = db['buffer']
 studentMap = db['studentMap']
 studentPicture = db['studentPicture']
 
-userName = buffer.find_one({'_id':{'$ne' : '-1'}})['_id']
-buffer.delete_one({'_id':userName})
-print(userName)
+userName = buffer.find_one({'_id':{'$ne' : '1-1'}})['_id']
+
 pictures = studentPicture.find_one({'_id':userName})
 
 Id = CF.person.create(PERSON_GROUP_ID,userName)['personId']
@@ -33,7 +29,6 @@ try:
     CF.person_group.train(PERSON_GROUP_ID)
     myDict = {'_id':userName,'PersonId':Id}
     studentMap.insert_one(myDict)
-    print("success")
+    buffer.delete_one({'_id':userName})
 except:
-    print("fail")
     CF.person.delete(PERSON_GROUP_ID,Id)

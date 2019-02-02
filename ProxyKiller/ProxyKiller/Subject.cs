@@ -19,6 +19,7 @@ namespace ProxyKiller
         static IMongoCollection<SubjectAttendance> subjects;
         static MongoClient client;
         List<SubjectAttendance> list;
+        SubjectAttendance subject;
         public Subject(string subjectId)
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace ProxyKiller
             list = subjects.Find<SubjectAttendance>(n=>true).ToList();
             var bindList = new BindingList<SubjectAttendance>(list);
             dataGridView1.DataSource = bindList;
+            subject = new SubjectAttendance();
             label1.Text = "Subject : " + subjectId;
         }
         static Subject()
@@ -33,25 +35,25 @@ namespace ProxyKiller
             client = new MongoClient();
             db = client.GetDatabase("ProxyKiller");
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             int index;
             try
             {
-               index = dataGridView1.SelectedRows[0].Index;
-               MessageBox.Show(list[index].UserName);
+                index = dataGridView1.SelectedRows[0].Index;
+                subject = subjects.Find(n => n.UserName == list[index].UserName).First();
+                listBox1.DataSource = subject.listOfAbsents;
+
             }
             catch { }
             try
             {
                 index = dataGridView1.CurrentCell.RowIndex;
-                MessageBox.Show(list[index].UserName);
+                subject = subjects.Find(n => n.UserName == list[index].UserName).First();
+                listBox1.DataSource = subject.listOfAbsents;
             }
             catch { }
-            
-            
-            
         }
+        
     }
 }

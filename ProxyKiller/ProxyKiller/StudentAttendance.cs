@@ -14,5 +14,9 @@ namespace ProxyKiller
         public string SubjectName { get; set; }
         public int Absent { get; set; }
         public List<DateTime> listOfAbsents { get; set; }
+        public StudentAttendance()
+        {
+            listOfAbsents = new List<DateTime>();
+        }
     }
 }
