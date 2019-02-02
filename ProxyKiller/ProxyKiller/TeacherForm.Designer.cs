@@ -502,7 +502,7 @@
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.pictureBox1);
-            this.panel4.Location = new System.Drawing.Point(614, 336);
+            this.panel4.Location = new System.Drawing.Point(1, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(624, 439);
             this.panel4.TabIndex = 25;
