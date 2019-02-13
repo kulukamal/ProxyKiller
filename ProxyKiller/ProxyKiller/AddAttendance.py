@@ -51,7 +51,7 @@ while i <= end :
             print(face)
             try :
                 userName = studentMap.find_one({'PersonId':Id})['_id']
-                print(userName + " : " + str(face['candidates'][0]['confidence']))
+                print(userName + " : " +  bstr(face['candidates'][0]['confidence']))
                 myDict = {'_id':userName}
                 up = {'$set':{'Buffer':1}}
                 attendanceMap.update_one(myDict,up)

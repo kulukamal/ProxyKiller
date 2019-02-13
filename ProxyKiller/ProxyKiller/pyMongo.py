@@ -7,6 +7,7 @@ import glob
 import tkinter as tk
 from tkinter import filedialog
 
+
 KEY = '19cbaf8a3a224dd687d5fe31f6ef353b'  # Replace with a valid subscription key (keeping the quotes in place).
 CF.Key.set(KEY)
 PERSON_GROUP_ID = 'proxykiller'
