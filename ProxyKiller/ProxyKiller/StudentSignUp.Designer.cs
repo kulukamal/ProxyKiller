@@ -46,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -54,7 +55,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -97,6 +97,7 @@
             this.button6.TabIndex = 7;
             this.button6.Text = "Clear";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label1
             // 
@@ -119,6 +120,7 @@
             this.linkLabel1.TabIndex = 8;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Already a user ? ( Login)";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
             // 
             // label2
             // 
@@ -164,6 +166,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "SignUp";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox2
             // 
@@ -259,6 +262,16 @@
             this.panel2.Size = new System.Drawing.Size(349, 686);
             this.panel2.TabIndex = 27;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(98, 119);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(149, 26);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Image of User";
+            // 
             // pictureBox4
             // 
             this.pictureBox4.ImageLocation = "C:\\ProxyKiller\\ProxyKiller\\ProxyKiller\\PicturesUsed\\male.jpg";
@@ -277,6 +290,7 @@
             this.button5.TabIndex = 30;
             this.button5.Text = "upload";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // pictureBox2
             // 
@@ -296,6 +310,7 @@
             this.button4.TabIndex = 28;
             this.button4.Text = "upload";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // pictureBox1
             // 
@@ -315,6 +330,7 @@
             this.button3.TabIndex = 26;
             this.button3.Text = "upload";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // pictureBox3
             // 
@@ -334,16 +350,7 @@
             this.button1.TabIndex = 24;
             this.button1.Text = "upload";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(98, 119);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(149, 26);
-            this.label7.TabIndex = 31;
-            this.label7.Text = "Image of User";
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox5
             // 

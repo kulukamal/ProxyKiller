@@ -50,7 +50,9 @@ while i <= end :
             Id = face['candidates'][0]['personId']
             print(face)
             try :
+                print(Id)
                 userName = studentMap.find_one({'PersonId':Id})['_id']
+                print(userName)
                 print(userName + " : " + str(face['candidates'][0]['confidence']))
                 myDict = {'_id':userName}
                 up = {'$set':{'Buffer':1}}

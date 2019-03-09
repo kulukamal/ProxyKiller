@@ -170,13 +170,8 @@ namespace ProxyKiller
                 pictureBox4.ImageLocation = img.FileName;
             }
         }
-
-        //back to login link
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            LoginForm l = LoginForm.GetInstance();
-            MainContainer.LoadForm(l);
-        }
+        
+        
         //clear button
         private void button6_Click(object sender, EventArgs e)
         {
@@ -184,5 +179,12 @@ namespace ProxyKiller
             pictureBox1.ImageLocation = pictureBox2.ImageLocation = pictureBox3.ImageLocation = pictureBox4.ImageLocation = defaultImage;
 
         }
+
+        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LoginForm l = LoginForm.GetInstance();
+            MainContainer.LoadForm(l);
+        }
+        
     }
 }
